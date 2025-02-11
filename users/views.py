@@ -6,7 +6,6 @@ def inicio(request):
     return HttpResponse("<h1>Hola Ahora si</h1>")
 
 def second_view(request):
-    print("second view")
     context = {
         "name": "Luis",
         "second_name": "Rios",
