@@ -12,3 +12,5 @@ def second_view(request):
         "age": 48,
     }
     return render(request, "base.html", context=context)
+def about_view(request):
+    return render(request, "about.html")

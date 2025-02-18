@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from users.views import inicio, second_view
+from users.views import inicio, about_view
 from django.contrib.auth.views import (
     LoginView,
     LogoutView
@@ -31,4 +31,5 @@ urlpatterns = [
          name='login'
          ),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('about/', about_view, name='about'),
 ]
