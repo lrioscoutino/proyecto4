@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from users.models import Customer
 # Create your views here.
 def inicio(request):
     print("Inicio")
@@ -13,7 +14,11 @@ def second_view(request):
     }
     return render(request, "base.html", context=context)
 def about_view(request):
-    return render(request, "about.html")
+    customers = Customer.objects.all()
+    context = {
+        "customers": customers,
+    }
+    return render(request, "about.html", context=context)
 
 def home_view(request):
     return render(request, "home.html")
