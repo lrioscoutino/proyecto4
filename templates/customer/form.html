@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="{% url 'customer' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Primer Nombre</label>
+    <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{customer.first_name}}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Segundo Nombre</label>
+    <input type="text" name="last_name" class="form-control" id="exampleInputPassword1" value="{{customer.last_name}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

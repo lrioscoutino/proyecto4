@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+{% load static %}
+<script src="{% static 'htmx.min.js' %}" defer></script>
+  <form hx-post='{% url "login" %}'>
+    <input id="username" name="username" type="text"
+        hx-post="/validate"
+        hx-trigger="change">
+      <input id="password" name="password" type="text"
+        hx-trigger="change">
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

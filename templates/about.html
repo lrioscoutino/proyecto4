@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Acerca de</h1>
+<a class="btn btn-success" href="{% url 'customer' %}">Agregar</a>
 <table class="table">
     <thead>
     <tr>
@@ -12,7 +13,7 @@
   <tbody>
   {% for customer in customers %}
     <tr>
-      <th scope="row">{{customer.id}}</th>
+      <th scope="row"><a href="{% url 'edit_customer' pk=customer.id  %}">{{customer.id}}</a></th>
       <td>{{customer.first_name}}</td>
       <td>{{customer.last_name}}</td>
     </tr>
