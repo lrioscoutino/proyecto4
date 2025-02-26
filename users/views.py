@@ -48,7 +48,17 @@ def customer_view(request):
 
 def edit_customer_view(request, pk):
     customer = Customer.objects.get(id=pk)
+    if request.method == "POST":
+        customer.first_name = request.POST["first_name"]
+        customer.last_name = request.POST["last_name"]
+        customer.save()
+        return redirect(reverse_lazy('about'))
     context ={
         "customer": customer,
     }
-    return render(request, "customer/form.html", context=context)
+    return render(request, "customer/edit.html", context=context)
+
+def delete_customer_view(request, pk):
+    customer = Customer.objects.get(id=pk)
+    customer.delete()
+    return redirect(reverse_lazy('about'))

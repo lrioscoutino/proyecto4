@@ -8,6 +8,7 @@
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
       <th scope="row"><a href="{% url 'edit_customer' pk=customer.id  %}">{{customer.id}}</a></th>
       <td>{{customer.first_name}}</td>
       <td>{{customer.last_name}}</td>
+      <td><a href="{% url 'delete_customer' pk=customer.id  %}" class="btn btn-danger">Eliminar</a></td>
     </tr>
   </tbody>
     {% endfor %}
