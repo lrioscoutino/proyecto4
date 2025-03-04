@@ -1,7 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Customer(models.Model):
+    user = models.ForeignKey(
+        User,
+        related_name="users",
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True
+    )
     first_name = models.CharField(max_length=20, blank=True, null=True)
     last_name = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)

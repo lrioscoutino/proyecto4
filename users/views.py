@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from users.models import Customer
 
 from django.shortcuts import render
-from django.views.decorators.cache import cache_control
-from django.views.decorators.vary import vary_on_headers
+from django.views.generic import View, ListView, CreateView
+
 
 # Create your views here.
 def inicio(request):
@@ -62,3 +62,24 @@ def delete_customer_view(request, pk):
     customer = Customer.objects.get(id=pk)
     customer.delete()
     return redirect(reverse_lazy('about'))
+
+class CustomerView(ListView):
+    model = Customer
+    template_name = "customer/list.html"
+    context_object_name = "customers"
+
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Customer.objects.all()
+        return Customer.objects.filter(
+            user=self.request.user
+        )
+
+    def post(self, request):
+         pass
+
+    def delete(self, request):
+        pass
+
+    def put(self, request):
+        pass

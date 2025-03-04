@@ -7,6 +7,7 @@ from users.views import (
     customer_view,
     edit_customer_view,
     delete_customer_view,
+    CustomerView,
 )
 from django.contrib.auth.views import (
     LoginView,
@@ -26,4 +27,5 @@ urlpatterns = [
     path('customer/', customer_view, name='customer'),
     path('customer/edit/<int:pk>/', edit_customer_view, name='edit_customer'),
     path('customer/delete/<int:pk>/', delete_customer_view, name='delete_customer'),
+    path('customer/list/', CustomerView.as_view(), name='list_customer'),
 ]
