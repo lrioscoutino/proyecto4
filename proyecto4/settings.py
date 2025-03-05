@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'users',
     "django_htmx",
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -21,8 +21,10 @@ from django.contrib.auth.views import (
     LoginView,
     LogoutView
 )
+from users.routers import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('users.urls')),
+    path('api/', include((router.urls, 'app_name'))),
 ]

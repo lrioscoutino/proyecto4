@@ -1,3 +1,5 @@
+from xml.etree.ElementInclude import include
+
 from django.urls import path
 from users.views import (
     inicio,
@@ -13,6 +15,7 @@ from django.contrib.auth.views import (
     LoginView,
     LogoutView
 )
+from users.routers import router
 
 urlpatterns = [
     path('', LoginView.as_view(
@@ -28,4 +31,5 @@ urlpatterns = [
     path('customer/edit/<int:pk>/', edit_customer_view, name='edit_customer'),
     path('customer/delete/<int:pk>/', delete_customer_view, name='delete_customer'),
     path('customer/list/', CustomerView.as_view(), name='list_customer'),
+
 ]
